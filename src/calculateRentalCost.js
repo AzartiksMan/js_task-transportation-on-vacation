@@ -12,15 +12,15 @@ function calculateRentalCost(days) {
   const LONG_TERM = 7;
   const LONG_TERM_OFF = 50;
 
-  let rentOff = 0;
-
   if (days >= SHORT_TERM && days < LONG_TERM) {
-    rentOff = SHORT_TERM_OFF;
-  } else if (days >= LONG_TERM) {
-    rentOff = LONG_TERM_OFF;
+    return RENT_PER_DAY * days - SHORT_TERM_OFF;
   }
 
-  return RENT_PER_DAY * days - rentOff;
+  if (days >= LONG_TERM) {
+    return RENT_PER_DAY * days - LONG_TERM_OFF;
+  }
+
+  return RENT_PER_DAY * days;
 }
 
 module.exports = calculateRentalCost;
